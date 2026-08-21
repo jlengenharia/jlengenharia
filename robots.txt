@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /privacidade.html
+Disallow: /cookies.html
+Disallow: /termos.html
+
+Sitemap: https://jlengenharia.com.br/sitemap.xml
