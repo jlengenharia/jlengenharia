@@ -1,19 +1,55 @@
 (function () {
   'use strict';
 
-  /* ---------- Mobile nav ---------- */
+  /* ---------- Mobile nav (full-screen overlay, fade only) ----------
+     Um único botão (o hambúrguer do header) abre e fecha o painel — não
+     há botão de fechar duplicado. O painel some via opacity/visibility,
+     não display:none, então os links recebem tabindex="-1" quando
+     fechado para não ficarem focáveis "invisíveis". */
   var navToggle = document.querySelector('.nav-toggle');
-  var mainNav = document.querySelector('.main-nav');
-  if (navToggle && mainNav) {
-    navToggle.addEventListener('click', function () {
-      var isOpen = mainNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  var mobileMenu = document.getElementById('mobile-menu-panel');
+  var mobileMenuFocusables = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+  var previousBodyOverflow = '';
+
+  function setMenuFocusable(focusable) {
+    mobileMenuFocusables.forEach(function (el) {
+      if (focusable) el.removeAttribute('tabindex');
+      else el.setAttribute('tabindex', '-1');
     });
-    mainNav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        mainNav.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
+  }
+
+  function openMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', 'Fechar menu de navegação');
+    setMenuFocusable(true);
+    previousBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', onMenuKeydown);
+  }
+
+  function closeMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+    setMenuFocusable(false);
+    document.body.style.overflow = previousBodyOverflow;
+    document.removeEventListener('keydown', onMenuKeydown);
+  }
+
+  function onMenuKeydown(e) {
+    if (e.key === 'Escape') closeMobileMenu();
+  }
+
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener('click', function () {
+      var isOpen = mobileMenu.classList.contains('open');
+      if (isOpen) closeMobileMenu(); else openMobileMenu();
+    });
+    mobileMenuFocusables.forEach(function (link) {
+      link.addEventListener('click', closeMobileMenu);
     });
   }
 
@@ -134,10 +170,14 @@
   var marketingToggle = document.getElementById('cookie-marketing');
 
   function showBanner() {
-    if (banner) banner.classList.add('visible');
+    if (!banner) return;
+    banner.classList.add('visible');
+    document.body.classList.add('cookie-banner-open');
   }
   function hideBanner() {
-    if (banner) banner.classList.remove('visible');
+    if (!banner) return;
+    banner.classList.remove('visible');
+    document.body.classList.remove('cookie-banner-open');
   }
   function openPrefs() {
     if (prefsModal) prefsModal.classList.add('visible');

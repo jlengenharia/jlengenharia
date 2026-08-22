@@ -22,7 +22,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/assets/css/style.css">
 
@@ -68,6 +68,23 @@
 <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
 <symbol id="icon-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
 <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+<symbol id="icon-gear-hero" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+  <circle cx="12" cy="12" r="7.2"/>
+  <circle cx="12" cy="12" r="2.4"/>
+  <g>
+    <line x1="12" y1="4.7" x2="12" y2="2.3"/>
+    <line x1="12" y1="4.7" x2="12" y2="2.3" transform="rotate(45 12 12)"/>
+    <line x1="12" y1="4.7" x2="12" y2="2.3" transform="rotate(90 12 12)"/>
+    <line x1="12" y1="4.7" x2="12" y2="2.3" transform="rotate(135 12 12)"/>
+    <line x1="12" y1="4.7" x2="12" y2="2.3" transform="rotate(180 12 12)"/>
+    <line x1="12" y1="4.7" x2="12" y2="2.3" transform="rotate(225 12 12)"/>
+    <line x1="12" y1="4.7" x2="12" y2="2.3" transform="rotate(270 12 12)"/>
+    <line x1="12" y1="4.7" x2="12" y2="2.3" transform="rotate(315 12 12)"/>
+  </g>
+</symbol>
+<symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+<symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></symbol>
+<symbol id="icon-question" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.1 9a3 3 0 015.83 1c0 2-3 2.5-3 4.5"/><circle cx="12" cy="17.5" r=".4" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="9"/></symbol>
 </defs>
 </svg>
 
@@ -102,23 +119,57 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
         Fale no WhatsApp
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
-        <svg aria-hidden="true"><use href="#icon-menu"/></svg>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobile-menu-panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <line x1="3.5" y1="7" x2="20.5" y2="7" class="menu-icon-line menu-icon-line-1"/>
+          <line x1="3.5" y1="12" x2="20.5" y2="12" class="menu-icon-line menu-icon-line-2"/>
+          <line x1="3.5" y1="17" x2="20.5" y2="17" class="menu-icon-line menu-icon-line-3"/>
+        </svg>
       </button>
     </div>
   </div>
 </header>
+
+<!-- ============ MOBILE MENU OVERLAY ============
+     Painel em tela cheia abaixo do header (o botão hambúrguer do header
+     continua visível por cima e alterna abrir/fechar). Fade puro via
+     opacity+visibility, sem deslocamento. -->
+<div class="mobile-menu-panel" id="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Navegação">
+  <div class="mobile-menu-body">
+    <nav aria-label="Navegação mobile">
+    <ul class="mobile-menu-list">
+      <li><a href="/" tabindex="-1"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-home"/></svg></span><span class="menu-label">Início</span><svg class="menu-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></li>
+      <li><a href="#sobre" tabindex="-1"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shield-check"/></svg></span><span class="menu-label">Sobre</span><svg class="menu-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></li>
+      <li><a href="#servicos" tabindex="-1"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-gear"/></svg></span><span class="menu-label">Serviços</span><svg class="menu-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></li>
+      <li><a href="#como-trabalhamos" tabindex="-1"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-clipboard"/></svg></span><span class="menu-label">Como Trabalhamos</span><svg class="menu-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></li>
+      <li><a href="#projetos" tabindex="-1"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-drafting"/></svg></span><span class="menu-label">Projetos</span><svg class="menu-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></li>
+      <li><a href="#faq" tabindex="-1"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-question"/></svg></span><span class="menu-label">FAQ</span><svg class="menu-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></li>
+      <li><a href="#contato" tabindex="-1"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-mail"/></svg></span><span class="menu-label">Contato</span><svg class="menu-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></li>
+      <li><a href="https://wa.me/5511987429666?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." class="is-cta" target="_blank" rel="noopener" tabindex="-1"><span class="menu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-bolt"/></svg></span><span class="menu-label">Falar no WhatsApp agora</span><svg class="menu-chevron" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></li>
+    </ul>
+    </nav>
+  </div>
+  <div class="mobile-menu-footer">
+    <a href="https://wa.me/5511987429666" target="_blank" rel="noopener" aria-label="WhatsApp" tabindex="-1">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+    </a>
+    <a href="mailto:naujlds@gmail.com" aria-label="E-mail" tabindex="-1">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-mail"/></svg>
+    </a>
+  </div>
+</div>
 
 <main>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="circuit-bg" aria-hidden="true"></div>
-  <div class="container hero-inner">
+  <div class="container">
+  <div class="hero-inner">
     <div class="hero-content">
       <span class="hero-badge">
         <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><use href="#icon-map-pin"/></svg>
-        Atendemos a Grande São Paulo e Região
+        <span>Atendemos a Grande São Paulo</span>
       </span>
       <h1>Energia, <span class="accent-blue">tecnologia</span> e <span class="accent">segurança</span> para o seu projeto</h1>
       <p class="lead">Engenharia elétrica, automação e segurança eletrônica com a precisão de quem projeta e a agilidade de quem executa. Soluções inteligentes, resultados eficientes.</p>
@@ -139,24 +190,38 @@
       <div class="ring ring-1"></div>
       <div class="ring ring-2"></div>
       <div class="core">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF8C1A" stroke-width="1.4"><use href="#icon-gear"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-gear-hero"/></svg>
       </div>
     </div>
   </div>
+
+  <!-- Carrossel contínuo dos serviços, centralizado dentro do container do hero -->
+  <div class="service-carousel" aria-label="Nossos serviços">
+    <div class="service-track">
+      <div class="service-track-group">
+        <div class="service-chip"><span class="service-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-cam"/></svg></span><span>Segurança Eletrônica</span></div>
+        <div class="service-chip"><span class="service-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-gear"/></svg></span><span>Automação</span></div>
+        <div class="service-chip"><span class="service-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-drafting"/></svg></span><span>Engenharia</span></div>
+        <div class="service-chip"><span class="service-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-plug"/></svg></span><span>Reformas Elétricas</span></div>
+        <div class="service-chip"><span class="service-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-wrench"/></svg></span><span>Manutenção</span></div>
+        <div class="service-chip"><span class="service-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-clipboard"/></svg></span><span>Execução de Projetos</span></div>
+      </div>
+      <div class="service-track-group" aria-hidden="true">
+        <div class="service-chip"><span class="service-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-cam"/></svg></span><span>Segurança Eletrônica</span></div>
+        <div class="service-chip"><span class="service-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-gear"/></svg></span><span>Automação</span></div>
+        <div class="service-chip"><span class="service-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-drafting"/></svg></span><span>Engenharia</span></div>
+        <div class="service-chip"><span class="service-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-plug"/></svg></span><span>Reformas Elétricas</span></div>
+        <div class="service-chip"><span class="service-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-wrench"/></svg></span><span>Manutenção</span></div>
+        <div class="service-chip"><span class="service-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-clipboard"/></svg></span><span>Execução de Projetos</span></div>
+      </div>
+    </div>
+  </div>
+  </div>
 </section>
 
-<!-- ============ TRUST STRIP ============ -->
-<section class="trust-strip">
+<!-- ============ TRUST STRIP (estatísticas) ============ -->
+<section class="trust-strip section-light section-white">
   <div class="container">
-    <div class="trust-grid">
-      <div class="trust-item"><svg aria-hidden="true"><use href="#icon-cam"/></svg>Segurança Eletrônica</div>
-      <div class="trust-item"><svg aria-hidden="true"><use href="#icon-gear"/></svg>Automação</div>
-      <div class="trust-item"><svg aria-hidden="true"><use href="#icon-drafting"/></svg>Engenharia</div>
-      <div class="trust-item"><svg aria-hidden="true"><use href="#icon-plug"/></svg>Reformas Elétricas</div>
-      <div class="trust-item"><svg aria-hidden="true"><use href="#icon-wrench"/></svg>Manutenção</div>
-      <div class="trust-item"><svg aria-hidden="true"><use href="#icon-clipboard"/></svg>Execução de Projetos</div>
-    </div>
-
     <div class="stats-bar">
       <div class="stat"><strong data-count="10" data-suffix="+">0</strong><span>Anos de experiência</span></div>
       <div class="stat"><strong data-count="150" data-suffix="+">0</strong><span>Projetos entregues</span></div>
@@ -167,7 +232,7 @@
 </section>
 
 <!-- ============ SOBRE / PILARES ============ -->
-<section class="section" id="sobre">
+<section class="section section-light section-white" id="sobre">
   <div class="circuit-bg" aria-hidden="true"></div>
   <div class="container">
     <span class="section-label">Por que a JL</span>
@@ -200,7 +265,7 @@
 </section>
 
 <!-- ============ SERVIÇOS ============ -->
-<section class="section section-alt" id="servicos">
+<section class="section section-light" id="servicos">
   <div class="container">
     <span class="section-label">O que fazemos</span>
     <h2 class="section-title">Seis frentes, <span>uma única equipe</span></h2>
@@ -259,7 +324,7 @@
 </section>
 
 <!-- ============ COMO TRABALHAMOS ============ -->
-<section class="section" id="como-trabalhamos">
+<section class="section section-light section-white" id="como-trabalhamos">
   <div class="circuit-bg" aria-hidden="true"></div>
   <div class="container">
     <span class="section-label">Nosso processo</span>
@@ -292,45 +357,42 @@
 </section>
 
 <!-- ============ PROJETOS ============ -->
-<section class="section section-alt" id="projetos">
+<section class="section section-light" id="projetos">
   <div class="container">
     <span class="section-label">Projetos executados</span>
     <h2 class="section-title">Trabalho que <span>fala por si</span></h2>
     <p class="section-sub">Uma amostra dos projetos entregues pela JL Engenharia na Grande São Paulo.</p>
 
-    <!-- Substituir os thumbnails abaixo por fotos reais das obras do cliente -->
+    <!-- Imagens ilustrativas do tipo de serviço — substituir por fotos reais das obras do cliente assim que disponíveis -->
     <div class="projects-grid">
       <div class="project-card reveal">
         <div class="project-thumb">
-          <div class="circuit-bg" aria-hidden="true"></div>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-cam"/></svg>
+          <img src="/assets/img/projeto-seguranca-eletronica.webp" width="900" height="675" alt="Técnico instalando câmera de CFTV na fachada de uma residência" loading="lazy" decoding="async">
         </div>
         <div class="project-info">
           <span>Segurança Eletrônica</span>
           <h3>Instalação de CFTV residencial</h3>
-          <p>[Substituir por descrição e foto real do projeto]</p>
+          <p>Exemplo do tipo de instalação de câmeras e monitoramento que realizamos em residências.</p>
         </div>
       </div>
       <div class="project-card reveal">
         <div class="project-thumb">
-          <div class="circuit-bg" aria-hidden="true"></div>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-gear"/></svg>
+          <img src="/assets/img/projeto-automacao.webp" width="900" height="675" alt="Técnico organizando fiação em um painel de automação industrial" loading="lazy" decoding="async">
         </div>
         <div class="project-info">
           <span>Automação</span>
-          <h3>Automação predial comercial</h3>
-          <p>[Substituir por descrição e foto real do projeto]</p>
+          <h3>Automação predial e industrial</h3>
+          <p>Exemplo do tipo de painel de automação que projetamos e instalamos para clientes.</p>
         </div>
       </div>
       <div class="project-card reveal">
         <div class="project-thumb">
-          <div class="circuit-bg" aria-hidden="true"></div>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-plug"/></svg>
+          <img src="/assets/img/projeto-reforma-eletrica.webp" width="900" height="675" alt="Eletricista trocando o padrão de entrada e quadro elétrico de uma residência" loading="lazy" decoding="async">
         </div>
         <div class="project-info">
           <span>Reforma Elétrica</span>
           <h3>Troca de padrão e quadro elétrico</h3>
-          <p>[Substituir por descrição e foto real do projeto]</p>
+          <p>Exemplo do tipo de reforma elétrica que executamos, do padrão de entrada ao quadro.</p>
         </div>
       </div>
     </div>
@@ -338,7 +400,7 @@
 </section>
 
 <!-- ============ FAQ ============ -->
-<section class="section" id="faq">
+<section class="section section-light section-white" id="faq">
   <div class="circuit-bg" aria-hidden="true"></div>
   <div class="container">
     <span class="section-label">Dúvidas frequentes</span>
@@ -473,13 +535,12 @@
 
 <!-- ============ COOKIE BANNER (LGPD) ============ -->
 <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
-  <h3>Nós usamos cookies</h3>
-  <p>Usamos cookies para melhorar sua experiência e analisar o uso do site. Você pode aceitar todos, rejeitar os não essenciais ou personalizar suas preferências. Saiba mais na nossa <a href="/cookies.html">Política de Cookies</a>.</p>
+  <p>Usamos cookies para melhorar sua experiência. <a href="/cookies.html">Saiba mais</a>.</p>
   <div class="cookie-actions">
-    <button class="btn btn-primary" id="cookie-accept-all">Aceitar todos</button>
-    <button class="btn btn-ghost" id="cookie-reject-all">Rejeitar não essenciais</button>
+    <button class="btn btn-primary" id="cookie-accept-all">Aceitar</button>
+    <button class="btn btn-ghost" id="cookie-reject-all">Rejeitar</button>
+    <button class="btn-link" id="cookie-open-prefs">Personalizar</button>
   </div>
-  <button class="btn-link" id="cookie-open-prefs" style="margin-top:12px;">Personalizar preferências</button>
 </div>
 
 <div class="cookie-prefs" id="cookie-prefs">
