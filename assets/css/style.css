@@ -148,7 +148,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 800; line-height
   white-space: nowrap;
 }
 .btn-primary {
-  background: linear-gradient(135deg, var(--orange-light), var(--orange));
+  background: linear-gradient(135deg, #FF8C1A, #F5760B);
   color: var(--bg-primary);
   box-shadow: var(--shadow-orange);
 }
