@@ -175,7 +175,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 800; line-height
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px 0;
+  padding: 22px 24px;
 }
 .brand { display: flex; align-items: center; gap: 14px; }
 .brand-logo { width: 58px; height: 58px; flex-shrink: 0; }
