@@ -1,0 +1,32 @@
+# JL Engenharia e Automação
+
+> Empresa de engenharia elétrica, automação e segurança eletrônica com atendimento na Grande São Paulo.
+
+## Site oficial
+
+- [Página inicial](https://jlengenharia.com.br/): apresentação da empresa, serviços, processo de trabalho, tipos de projeto, perguntas frequentes e canais de contato.
+
+## Serviços
+
+- Segurança eletrônica: CFTV, alarmes, controle de acesso e monitoramento remoto.
+- Automação residencial, predial e industrial.
+- Projetos de engenharia elétrica, laudos técnicos e ART quando aplicável.
+- Reformas elétricas.
+- Manutenção elétrica preventiva e corretiva.
+- Execução de projetos, incluindo gestão de equipe, materiais e cronograma.
+
+## Área atendida
+
+- Grande São Paulo e região, mediante consulta de disponibilidade.
+
+## Contato
+
+- Telefone: +55 11 98742-9666
+- WhatsApp: https://wa.me/5511987429666
+- E-mail: jlengenharia.eng.br@gmail.com
+
+## Informações legais
+
+- [Política de Privacidade](https://jlengenharia.com.br/privacidade)
+- [Política de Cookies](https://jlengenharia.com.br/cookies)
+- [Termos de Uso](https://jlengenharia.com.br/termos)

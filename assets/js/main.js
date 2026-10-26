@@ -141,27 +141,32 @@
   }
 
   function applyConsent(consent) {
+    updateGoogleConsent(consent);
     document.dispatchEvent(new CustomEvent('jl:consent-updated', { detail: consent }));
-    if (consent.analytics) {
-      loadAnalyticsScripts();
-    }
-    if (consent.marketing) {
-      loadMarketingScripts();
-    }
+    if (consent.analytics || consent.marketing) loadGoogleTagManager();
   }
 
-  function loadAnalyticsScripts() {
-    if (window.__jlAnalyticsLoaded) return;
-    window.__jlAnalyticsLoaded = true;
-    // Ex.: injetar Google Analytics / GTM aqui somente após consentimento explícito.
-    // var s = document.createElement('script'); s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX';
-    // document.head.appendChild(s);
+  function updateGoogleConsent(consent) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    window.gtag('consent', window.__jlConsentInitialized ? 'update' : 'default', {
+      analytics_storage: consent.analytics ? 'granted' : 'denied',
+      ad_storage: consent.marketing ? 'granted' : 'denied',
+      ad_user_data: consent.marketing ? 'granted' : 'denied',
+      ad_personalization: consent.marketing ? 'granted' : 'denied'
+    });
+    window.__jlConsentInitialized = true;
   }
 
-  function loadMarketingScripts() {
-    if (window.__jlMarketingLoaded) return;
-    window.__jlMarketingLoaded = true;
-    // Ex.: injetar Meta Pixel / outros scripts de marketing aqui somente após consentimento explícito.
+  function loadGoogleTagManager() {
+    if (window.__jlGtmLoaded) return;
+    window.__jlGtmLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-5G77CPBQ';
+    document.head.appendChild(script);
   }
 
   var banner = document.getElementById('cookie-banner');
